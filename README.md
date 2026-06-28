@@ -155,40 +155,17 @@ using SQLite.
 
 ---
 
-# 🛠️ Technologies Used
-
-## Backend
-
-* Python
-* Flask
-
-## Artificial Intelligence
-
-* Hugging Face Transformers
-* Scikit-learn
-* OCR Models
-
-## Database
-
-* SQLite
-
-## Frontend
-
-* HTML5
-* CSS3
-* JavaScript
-
-## Libraries
-
-* Transformers
-* PyTorch
-* pdfplumber
-* Pillow
-* pytesseract
-* scikit-learn
-* sqlite3
-
-
+![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-3.x-000000?logo=flask&logoColor=white)
+![Transformers](https://img.shields.io/badge/Transformers-HuggingFace-FFD21E?logo=huggingface&logoColor=black)
+![Scikit--Learn](https://img.shields.io/badge/Scikit--Learn-ML-F7931E?logo=scikitlearn&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-2.x-EE4C2C?logo=pytorch&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-Database-003B57?logo=sqlite&logoColor=white)
+![OCR](https://img.shields.io/badge/OCR-Ready-28A745)
+![PDF](https://img.shields.io/badge/PDF-Supported-D32F2F)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E?logo=javascript&logoColor=black)
 ---
 
 # 📈 Future Enhancements
