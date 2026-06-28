@@ -1,126 +1,184 @@
 # 🧠 AdaptiQ – AI-Powered Adaptive Quiz Generator
 
-> Transform your study materials into intelligent, adaptive quizzes using Artificial Intelligence.
-
-AdaptiQ is an AI-powered web application that automatically generates multiple-choice quizzes from study materials. It leverages Natural Language Processing (NLP), Machine Learning, and OCR to extract content, create meaningful questions, classify their difficulty, and track learning progress.
+An intelligent quiz generation platform that automatically creates multiple-choice questions from study materials using Natural Language Processing (NLP), Machine Learning, and OCR. The application supports multiple input formats, predicts question difficulty, and tracks quiz performance for continuous learning.
 
 ---
 
-## ✨ Features
+## 🚀 Live Demo
 
-* 🤖 AI-generated Multiple Choice Questions (MCQs)
-* 📄 Supports Plain Text, PDF, and Image uploads
-* 🔍 OCR for scanned documents and handwritten notes
-* 🎯 Automatic difficulty classification (Easy • Medium • Hard)
-* 📊 Quiz scoring and performance analytics
-* 💾 SQLite database for storing quiz history
-* ⚡ Smart fallback question generation when AI confidence is low
-* 🌐 Responsive and user-friendly interface
+🔗 **Deployed Application:**
+**https://your-deployment-url.com**
 
 ---
 
-## 🏗️ System Overview
+## 📌 Features
 
-```text
-Study Material
-      │
-      ▼
-Content Extraction
-      │
-      ▼
-AI Question Generation
-      │
-      ▼
-Difficulty Prediction
-      │
-      ▼
-Interactive Quiz
-      │
-      ▼
-Performance Tracking
+* 📄 Generate quizzes from plain text, PDFs, and images
+* 🤖 AI-powered question generation using Transformer models
+* 📝 Automatic Multiple Choice Question (MCQ) creation
+* 🎯 Difficulty prediction (Easy, Medium, Hard)
+* 📊 Quiz performance tracking
+* 💾 SQLite database for quiz history
+* 🔍 OCR support for scanned documents and images
+* ⚡ Heuristic fallback when AI models produce insufficient results
+* 🌐 Simple and responsive web interface
+
+---
+
+# 🏗️ Project Architecture
+
+```
+User
+   │
+   ▼
+Frontend (HTML UI)
+   │
+   ▼
+Flask Backend (app.py)
+   │
+   ├────────► Document Processor
+   │             │
+   │             ├── Text Cleaning
+   │             ├── PDF Extraction
+   │             └── OCR (Images / Scanned PDFs)
+   │
+   ├────────► Question Generator
+   │             │
+   │             ├── Transformer Model
+   │             └── Heuristic Fallback
+   │
+   ├────────► Difficulty Classifier
+   │             │
+   │             ├── ML Model
+   │             └── Rule-Based Fallback
+   │
+   └────────► SQLite Database
+                 │
+                 ├── Quiz Sessions
+                 ├── Scores
+                 └── Student Responses
 ```
 
 ---
 
-## 📂 Project Structure
+# 📂 Project Structure
 
-```text
+```
 Adaptive-Quiz-Generator/
 │
-├── app.py                      # Flask application
-├── document_processor.py       # Text extraction & OCR
-├── question_generator.py       # AI-based MCQ generation
-├── difficulty_classifier.py    # Difficulty prediction
-├── database.py                 # SQLite database operations
-├── templates/                  # HTML templates
-├── static/                     # CSS, JavaScript & Assets
-├── models/                     # Trained ML models
+├── app.py
+├── document_processor.py
+├── question_generator.py
+├── difficulty_classifier.py
+├── database.py
+├── adaptiq-premium_fixed (7).html
+├── models/
+├── static/
+├── templates/
 ├── requirements.txt
 └── README.md
 ```
 
 ---
 
-## ⚙️ How It Works
+# ⚙️ How It Works
 
-### 📥 1. Upload Study Material
+### 1️⃣ Upload Study Material
 
-Upload learning content in one of the supported formats:
+Users provide learning material in one of the supported formats:
 
-* Text
-* PDF
+* Plain Text
+* PDF Documents
 * Images
-* Scanned Documents
+* Scanned PDFs
 
-### 🔍 2. Content Processing
+---
 
-The application extracts and cleans the uploaded content using text extraction and OCR techniques.
+### 2️⃣ Content Extraction
 
-### 🤖 3. AI Question Generation
+The application processes the uploaded content by:
 
-Transformer-based models generate question-answer pairs and convert them into multiple-choice questions. If necessary, a heuristic engine ensures high-quality quiz generation.
+* Cleaning plain text
+* Extracting text from PDFs
+* Performing OCR on images using Hugging Face models
 
-### 🎯 4. Difficulty Classification
+---
 
-Each question is classified into one of three levels:
+### 3️⃣ Question Generation
+
+The extracted content is passed to the AI engine, which:
+
+* Generates question-answer pairs
+* Converts them into multiple-choice questions
+* Creates meaningful distractor options
+* Uses heuristic generation if AI output is insufficient
+
+---
+
+### 4️⃣ Difficulty Prediction
+
+Each generated question is classified as:
 
 * 🟢 Easy
 * 🟡 Medium
 * 🔴 Hard
 
-using a trained Machine Learning model or a rule-based fallback.
+using a trained Scikit-learn classifier.
 
-### 📈 5. Quiz & Performance Tracking
-
-Users answer the generated quiz, receive instant feedback, and their quiz history is securely stored for future review.
+If the classifier model is unavailable, a heuristic based on question complexity is used.
 
 ---
 
-## 🛠️ Tech Stack
+### 5️⃣ Quiz Session
 
-### Frontend
+The generated quiz is sent to the frontend where users can:
+
+* Answer questions
+* View scores
+* Check difficulty levels
+* Review performance
+
+---
+
+### 6️⃣ Result Storage
+
+After quiz completion, the application stores:
+
+* Quiz Score
+* Percentage
+* Difficulty Filter
+* Input Type
+* Student Responses
+* Timestamp
+
+using SQLite.
+
+---
+
+# 🛠️ Technologies Used
+
+## Backend
+
+* Python
+* Flask
+
+## Artificial Intelligence
+
+* Hugging Face Transformers
+* Scikit-learn
+* OCR Models
+
+## Database
+
+* SQLite
+
+## Frontend
 
 * HTML5
 * CSS3
 * JavaScript
 
-### Backend
-
-* Python
-* Flask
-
-### Artificial Intelligence
-
-* Hugging Face Transformers
-* Scikit-learn
-* OCR Models
-* NLP Techniques
-
-### Database
-
-* SQLite
-
-### Libraries
+## Libraries
 
 * Transformers
 * PyTorch
@@ -128,10 +186,27 @@ Users answer the generated quiz, receive instant feedback, and their quiz histor
 * Pillow
 * pytesseract
 * scikit-learn
+* sqlite3
+
 
 ---
 
-## 🚀 Installation
+# 📈 Future Enhancements
+
+* ✅ Adaptive learning based on user performance
+* ✅ Personalized quiz recommendations
+* ✅ Authentication and user accounts
+* ✅ Leaderboard system
+* ✅ Cloud database integration
+* ✅ Support for DOCX and PPT files
+* ✅ Export quizzes as PDF
+* ✅ AI-generated explanations for answers
+* ✅ Analytics dashboard
+* ✅ Multilingual quiz generation
+
+---
+
+# 💻 Installation
 
 Clone the repository
 
@@ -159,71 +234,72 @@ python app.py
 
 Open your browser
 
-```text
+```
 http://127.0.0.1:5000
 ```
 
 ---
 
-## 📸 Application Preview
+# 📸 Screenshots
 
-> Add screenshots of:
+Add screenshots of:
 
-* 🏠 Home Page
-* 📄 Upload Interface
-* ❓ Generated Quiz
-* 📊 Quiz Results
-* 📈 Performance History
-
----
-
-## 🌱 Future Enhancements
-
-* 👤 User Authentication
-* ☁️ Cloud Database Integration
-* 📚 Personalized Learning Paths
-* 🌍 Multi-language Quiz Generation
-* 📥 Export Quizzes as PDF
-* 🧠 AI-generated Answer Explanations
-* 📊 Advanced Learning Analytics
-* 🏆 Leaderboards & Achievements
+* Home Page
+* Upload Interface
+* Generated Quiz
+* Difficulty Labels
+* Quiz Results
+* Performance History
 
 ---
 
-## 🤝 Contributing
+# 🤝 Contributing
 
-Contributions are always welcome!
+Contributions are welcome!
 
 1. Fork the repository
-2. Create a feature branch
+2. Create a new branch
+
+```
+git checkout -b feature-name
+```
+
 3. Commit your changes
-4. Push to your branch
+
+```
+git commit -m "Added new feature"
+```
+
+4. Push to GitHub
+
+```
+git push origin feature-name
+```
+
 5. Open a Pull Request
 
 ---
 
-## 📜 License
+# 📄 License
 
-This project is licensed under the **MIT License**.
+This project is licensed under the MIT License.
 
 ---
 
-## 👩‍💻 Author
+# 👨‍💻 Author
 
 **Your Name**
 
-AI | Machine Learning | Full Stack Developer
+AI & Full Stack Developer
 
-📧 [your-email@example.com](mailto:your-email@example.com)
+GitHub: https://github.com/your-username
 
-🌐 GitHub: https://github.com/your-username
+LinkedIn: https://linkedin.com/in/your-profile
 
 ---
 
-<div align="center">
+## ⭐ Support
 
-### ⭐ If you found this project useful, consider giving it a star!
+If you found this project useful, please consider giving it a ⭐ on GitHub!
 
-**"Learning becomes smarter when AI meets education."**
-
-</div>
+It helps others discover the project and motivates future improvements.
