@@ -154,6 +154,7 @@ After quiz completion, the application stores:
 using SQLite.
 
 ---
+# 🛠️ Tech Stack
 
 ![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)
 ![Flask](https://img.shields.io/badge/Flask-3.x-000000?logo=flask&logoColor=white)
